@@ -9,6 +9,9 @@
   </head>
   <body>
 
+  <div>
+      <form></form>
+  </div>
 
   <div class="container tictac">
 
@@ -17,9 +20,9 @@
           <div class="col center score">
               Scores
               <div class="row">
-                  <div class="col col-md-3 center">Player 1</div>
+                  <div class="col col-md-3 center">PlayerX  {{ x }}</div>
                   <div class="col"></div>
-                  <div class="col col-md-3 center">Player 2</div>
+                  <div class="col col-md-3 center">PlayerY  {{ y }}</div>
               </div>
           </div>
           <div class="col"></div>
@@ -35,19 +38,25 @@
 
             <div class="row">
                 <div class="col col-md-4 col-sm-4 col-xs-4">
-                    <button class="button" href="{{ url_for('tic_tac') }}">{{ lobby[0][0] }}</button>
-                    <button class="button" href="{{ url_for('tic_tac') }}">{{ lobby[0][1] }}</button>
-                    <button class="button" href="{{ url_for('tic_tac') }}">{{ lobby[0][2] }}</button>
+                    <form action="{{url_for('tic_tac') }}" method="post">
+                        <button class="button" name="b1" type="submit" value='0 0'>{{ lobby[0][0] }}</button>
+                        <button class="button" name="b1" type="submit" value="1 0">{{ lobby[1][0] }}</button>
+                        <button class="button" name="b1" type="submit" value="2 0">{{ lobby[2][0] }}</button>
+                    </form>
                 </div>
                 <div class="col col-md-4 col-sm-4 col-xs-4">
-                    <button class="button"></button>
-                    <button class="button"></button>
-                    <button class="button"></button>
+                    <form action="{{url_for('tic_tac') }}" method="post">
+                        <button class="button" name="b1" type="submit" value='0 1'>{{ lobby[0][1] }}</button>
+                        <button class="button" name="b1" type="submit" value="1 1">{{ lobby[1][1] }}</button>
+                        <button class="button" name="b1" type="submit" value="2 1">{{ lobby[2][1] }}</button>
+                    </form>
                 </div>
                 <div class="col col-md-4 col-sm-4 col-xs-4">
-                    <button class="button"></button>
-                    <button class="button"></button>
-                    <button class="button"></button>
+                    <form action="{{url_for('tic_tac') }}" method="post">
+                        <button class="button" name="b1" type="submit" value='0 2'>{{ lobby[0][2] }}</button>
+                        <button class="button" name="b1" type="submit" value="1 2">{{ lobby[1][2] }}</button>
+                        <button class="button" name="b1" type="submit" value="2 2">{{ lobby[2][2] }}</button>
+                    </form>
                 </div>
             </div>
 

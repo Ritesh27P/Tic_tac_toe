@@ -4,7 +4,8 @@ body{
 
 .button {
   border: 20px solid black;
-  padding: 40px 40px;
+  width: 150px;
+  height: 150px;
   text-align: center;
   display: inline-block;
   margin: 10px 20px;
@@ -16,7 +17,7 @@ body{
 }
 
 .white{
-    background-color: white;
+    background-color: red;
 }
 
 .score{
