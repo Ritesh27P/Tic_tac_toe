@@ -35,15 +35,18 @@ def tic_tac():
             lobby[i][j] = "X"
             starting_symbol = False
         elif not starting_symbol and (lobby[i][j] == ' '):
-            print('hii')
             lobby[i][j] = 'O'
             starting_symbol = True
-
+        terminate = 3
         for i in lobby:
-            if ' ' in i:
-                break
-            else:
-                return redirect(url_for('home', win=None))
+            if ' ' not in i:
+                terminate -= 1
+
+        if terminate == 0:
+            lobby = np.array([[' ', ' ', ' '],
+                              [' ', ' ', ' '],
+                              [' ', ' ', ' ']])
+            return render_template('index.html', win='O', lobby=lobby, x=x_win, y=y_win)
 
 
         temp = ''
@@ -59,14 +62,27 @@ def tic_tac():
                                       [' ', ' ', ' '],
                                       [' ', ' ', ' ']])
                     return render_template('index.html', win='X', lobby=lobby, x=x_win, y=y_win)
-                if temp == 'OOO':
+                elif temp == 'OOO':
                     y_win += 1
+                    print(y_win)
                     lobby = np.array([[' ', ' ', ' '],
                                       [' ', ' ', ' '],
                                       [' ', ' ', ' ']])
                     return render_template('index.html', win='O', lobby=lobby, x=x_win, y=y_win)
                 temp = ''
     return redirect(url_for('home', win=None))
+
+
+@app.route('/reset', methods=['POST', 'GET'])
+def reset():
+    global x_win, y_win, lobby
+    x_win = 0
+    y_win = 0
+    lobby = np.array([[' ', ' ', ' '],
+                      [' ', ' ', ' '],
+                      [' ', ' ', ' ']])
+    return redirect(url_for('home', win=None))
+
 
 
 if __name__ == "__main__":
