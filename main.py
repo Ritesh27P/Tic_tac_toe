@@ -84,7 +84,6 @@ def reset():
     return redirect(url_for('home', win=None))
 
 
-
 if __name__ == "__main__":
     app.run(debug=True)
     pass
