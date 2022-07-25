@@ -59,13 +59,14 @@ def tic_tac():
                         temp += lobby[a][b]
                 if temp == 'XXX':
                     x_win += 1
+                    starting_symbol = True
                     lobby = np.array([[' ', ' ', ' '],
                                       [' ', ' ', ' '],
                                       [' ', ' ', ' ']])
                     return render_template('index.html', win='X', lobby=lobby, x=x_win, y=y_win)
                 elif temp == 'OOO':
                     y_win += 1
-                    print(y_win)
+                    starting_symbol = True
                     lobby = np.array([[' ', ' ', ' '],
                                       [' ', ' ', ' '],
                                       [' ', ' ', ' ']])
