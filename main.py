@@ -46,6 +46,7 @@ def tic_tac():
             lobby = np.array([[' ', ' ', ' '],
                               [' ', ' ', ' '],
                               [' ', ' ', ' ']])
+            starting_symbol = True
             return render_template('index.html', win='O', lobby=lobby, x=x_win, y=y_win)
 
 
@@ -58,13 +59,14 @@ def tic_tac():
                         temp += lobby[a][b]
                 if temp == 'XXX':
                     x_win += 1
+                    starting_symbol = True
                     lobby = np.array([[' ', ' ', ' '],
                                       [' ', ' ', ' '],
                                       [' ', ' ', ' ']])
                     return render_template('index.html', win='X', lobby=lobby, x=x_win, y=y_win)
                 elif temp == 'OOO':
                     y_win += 1
-                    print(y_win)
+                    starting_symbol = True
                     lobby = np.array([[' ', ' ', ' '],
                                       [' ', ' ', ' '],
                                       [' ', ' ', ' ']])
@@ -81,6 +83,7 @@ def reset():
     lobby = np.array([[' ', ' ', ' '],
                       [' ', ' ', ' '],
                       [' ', ' ', ' ']])
+    starting_symbol = True
     return redirect(url_for('home', win=None))
 
 
